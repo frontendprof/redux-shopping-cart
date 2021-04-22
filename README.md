@@ -7,3 +7,10 @@
 1. Removing unnecessary files
 2. Cleanup
 3. Wiring up to github account
+
+### Components
+
+1. App component
+2. Navbar component
+3. CartContainer component
+4. CartItem component
