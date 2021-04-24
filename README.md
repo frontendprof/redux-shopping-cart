@@ -14,3 +14,12 @@
 2. Navbar component
 3. CartContainer component
 4. CartItem component
+
+### App component
+
+1. Importing Navbar component
+2. Importing CartContainer component
+
+### CartContainer component
+
+1.
