@@ -34,11 +34,11 @@ const CartItem = ({ img, title, price, amount,remove,increase,decrease }) => {
 };
 
 const mapDispatchToProps=(dispatch,ownProps)=>{
-  const {id}=ownProps;
+  const {id,amount}=ownProps;
   return{
     remove:()=>dispatch({type:REM,payload:{id}}),
     increase:()=>dispatch({type:INC,payload:{id}}),
-    decrease:()=>dispatch({type:DEC,payload:{id}})
+    decrease:()=>dispatch({type:DEC,payload:{id,amount}})
   }
 }
 
