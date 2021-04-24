@@ -1,6 +1,5 @@
 import React from "react";
 // redux store
-import {DEC,INC,RESET} from "./actions";
 import reducer from "./reducer";
 import { createStore } from 'redux';
 import {Provider} from 'react-redux';
@@ -17,7 +16,7 @@ import cartItems from "./cart-items";
 // Initial store
 const initialStore={
   cart:cartItems,
-  total:0,
+  total:115,
   amount:12
 }
 
