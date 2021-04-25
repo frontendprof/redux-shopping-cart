@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from 'react-redux'
 
-import {DEC, INC, REM} from "../actions";
+import {DEC, INC, removeItem} from "../actions";
 
 const CartItem = ({ img, title, price, amount,remove,increase,decrease }) => {
   return (
@@ -23,7 +23,14 @@ const CartItem = ({ img, title, price, amount,remove,increase,decrease }) => {
         {/* amount */}
         <p className="amount">{amount}</p>
         {/* decrease amount */}
-        <button className="amount-btn" onClick={()=>decrease()}>
+        <button className="amount-btn" onClick={()=>{
+            if(amount===1){
+              return remove()
+            }else{
+
+              return decrease()
+            }
+          }}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
           </svg>
@@ -36,7 +43,7 @@ const CartItem = ({ img, title, price, amount,remove,increase,decrease }) => {
 const mapDispatchToProps=(dispatch,ownProps)=>{
   const {id,amount}=ownProps;
   return{
-    remove:()=>dispatch({type:REM,payload:{id}}),
+    remove:()=>dispatch(removeItem(id)),
     increase:()=>dispatch({type:INC,payload:{id}}),
     decrease:()=>dispatch({type:DEC,payload:{id,amount}})
   }
