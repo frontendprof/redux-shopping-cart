@@ -1,23 +1,24 @@
 import {CLEAR_CART,REM,INC,DEC,GET_TOTALS} from "./actions";
 
+// items
+import cartItems from "./cart-items";
+
+
+// Initial store
+const initialStore={
+  cart:cartItems,
+  total:0,
+  amount:0
+}
+
+
+
+
 
 
 // reducer
-function reducer(state,action){
+function reducer(state=initialStore,action){
   
-    // switch(action.type){
-
-    //   case REM:
-    //     console.log(action.payload.id);
-  
-    //   case CLEAR_CART:
-    //     return{
-    //       ...state,cart:[]
-    //     }    
-      
-    //   default:
-    //     return state
-    // }
 
     if(action.type===INC){
 
@@ -32,18 +33,12 @@ function reducer(state,action){
     }
 
     if(action.type===DEC){
-      let tempCart=[]
-      
-      if(action.payload.amount===1){
-        tempCart=state.cart.filter(item=>item.id!==action.payload.id)
-      }else{
-        tempCart=state.cart.map(item=>{
+      let tempCart=state.cart.map(item=>{
           if(item.id===action.payload.id){
             return {...item,amount:item.amount-1}
           }
           return item
         })
-      }
       
       return {...state,cart:tempCart}
 
